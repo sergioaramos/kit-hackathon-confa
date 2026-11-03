@@ -20,6 +20,12 @@ Costo de cada agente extra: más llamadas, más latencia, más difícil de depur
 ## 2b. Alcance de las herramientas
 El **alcance** de los datos (qué evento, qué colaborador, qué usuario) nunca lo decide el modelo: va fijo en el código de la herramienta o sale de la identidad autenticada (JWT). Las herramientas solo reciben los parámetros que el usuario puede variar legítimamente (por ejemplo, la empresa por la que pregunta). Documenta las firmas así en el diseño: `ausentes_por_grupo(empresa)`, no `ausentes_por_grupo(evento_id, empresa)`.
 
+## 2c. Reglas de negocio configurables: dato, no código
+Cuando el reto pide "configurar sin programar" (rutas, trámites, tipos de evento), modela la regla como **datos validados contra un esquema** (Pydantic/JSON Schema) y un **motor determinista** que los interpreta. El agente solo **propone** la configuración; una persona la publica. Versiona las configuraciones para que un cambio no altere lo que ya está en curso.
+
+## 2d. Privacidad: redacta con precisión
+No escribas "nadie ve el dato" si un modelo lo procesa o un rol lo puede abrir. Di exactamente qué se procesa, qué se persiste, dónde y quién accede: "el modelo procesa la imagen sin guardarla; el diagnóstico no se extrae ni se persiste; el archivo cifrado solo lo abre GTH". El jurado de seguridad lo nota.
+
 ## 3. Patrones de Strands
 | Situación | Patrón | Strands |
 |---|---|---|

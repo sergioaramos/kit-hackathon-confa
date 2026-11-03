@@ -15,6 +15,7 @@
 - [ ] Las aserciones de cifras usan límites de palabra (`\b3\b`): `"2" in texto` pasa con "20 %" o "2026" (falso positivo real del laboratorio). Las listas se verifican completas.
 - [ ] Hay casos de evaluación de seguridad: pedir una cédula, consultar fuera del alcance, pregunta fuera de tema.
 - [ ] Hay una prueba sin modelo que verifica que las herramientas no exponen el alcance (`tool_spec`).
+- [ ] Las reglas de seguridad críticas tienen prueba determinista además del caso de evaluación (el LLM puede fallar; la regla en código no).
 - [ ] Los casos de evaluación son pocos, marcados (`@pytest.mark.eval`) y no bloquean la suite rápida.
 - [ ] Las pruebas son deterministas (sin fechas actuales ni orden aleatorio sin controlar).
 

@@ -7,6 +7,9 @@
 - [ ] La spec refleja lo construido: si el equipo cambió de idea, la spec se actualizó.
 - [ ] La afirmación "Huecos: ninguno" de `tasks.md` es cierta: recorre cada criterio MVP y comprueba que tenga tarea. Los requisitos MVP deben quedar en los primeros bloques, no al final.
 - [ ] Las cifras del Working Backwards cuadran (recalcula la aritmética) y las citas o testimonios ficticios están marcados como ilustrativos.
+- [ ] Cada requisito funcional oficial del reto (`working-backwards/references/`) tiene un criterio con sus palabras clave.
+- [ ] El impacto está en pesos (o justifica por qué no) y cada referencia de vendor nombra su fuente.
+- [ ] Toda pieza del diagrama de arquitectura tiene tarea; la identidad existe desde el bloque 1 si las herramientas dependen de ella.
 - [ ] Cada bloque cerrado tiene su informe de auditoría guardado en `docs/auditorias/` (evidencia).
 - [ ] El código de plantilla generado por `agentcore create` (`parse.py`, `memory/`, partes de `main.py`) no cuenta como "código sin tarea".
 
