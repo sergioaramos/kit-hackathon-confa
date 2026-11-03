@@ -10,7 +10,8 @@
 
 ## Memory
 - [ ] `eventExpiryDuration` justificado (3-365 días).
-- [ ] Estrategias necesarias y no todas por defecto (la plantilla trae SEMANTIC, USER_PREFERENCE, SUMMARIZATION y EPISODIC: quitar las que no se usen).
+- [ ] Estrategias necesarias y no todas por defecto (la plantilla trae SEMANTIC, USER_PREFERENCE, SUMMARIZATION y EPISODIC con `eventExpiryDuration: 30`: quitar las que no se usen y ajustar la retención a lo que promete el diseño).
+- [ ] `memory/session.py` (`retrieval_config`) solo consulta los namespaces de las estrategias declaradas.
 - [ ] `actorId` real del usuario en el payload (no `"default"`), para que la memoria no se mezcle entre personas.
 - [ ] No se guardan datos sensibles en la memoria (diagnósticos, imágenes).
 

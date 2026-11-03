@@ -134,3 +134,59 @@ def test_agente_usa_herramienta_para_ausentes():
     assert "Luis" in str(r)
 ```
 Para acelerar las pruebas y no gastar tokens, prueba las herramientas directamente; los casos de evaluación, pocos y marcados con `@pytest.mark.eval`.
+
+Registra el marcador en `pyproject.toml` para que la suite rápida no cargue el modelo:
+```toml
+[tool.pytest.ini_options]
+markers = ["eval: casos de evaluación del agente (requieren modelo)"]
+addopts = "-m \"not eval\""
+```
+Correr evaluaciones: `LOCAL_MODEL=ollama uv run pytest -m eval`.
+
+En las aserciones de evaluación usa límites de palabra (`re.search(r"\b3\b", texto)`; `"2" in texto` también coincide con "20 %" o "2026") y verifica **todos** los elementos esperados, no solo uno. Prueba sin modelo que una herramienta no expone el alcance:
+```python
+def test_herramienta_no_recibe_el_evento():
+    props = agente.contar_asistencia.tool_spec["inputSchema"]["json"].get("properties", {})
+    assert "evento_id" not in props
+```
+
+## 11. System prompt que funciona (verificado en el laboratorio del reto 1)
+```python
+SYSTEM_PROMPT = """Eres el asistente de <dominio> de CONFA para <usuario>.
+
+Tono: cálido, cercano y profesional. Empieza directamente con la respuesta;
+nunca repitas lemas, saludos de marca ni frases institucionales.
+
+Formato: texto plano en español, máximo 3 frases, sin emojis ni markdown.
+Ejemplo: "<una respuesta ideal, corta y con cifras>"
+
+Reglas:
+- Toda cifra o nombre sale de una herramienta. Nunca estimes ni inventes datos.
+- Solo respondes sobre <alcance>. Si te preguntan otra cosa, dilo con amabilidad.
+- Nunca muestres números de cédula ni otros datos personales.
+"""
+```
+Con el lema entre comillas en el prompt, el modelo empezaba cada respuesta con "Contigo, con todo:" y llenaba de emojis.
+
+## 12. Herramienta con alcance fijo (el modelo no elige el evento)
+```python
+EVENTO_ACTIVO = os.getenv("EVENTO_ACTIVO", "ev-001")   # bloque de auth: sale del JWT del usuario
+
+@tool
+def ausentes_por_grupo(empresa: str) -> list[str]:
+    """Lista los inscritos de una empresa que aún no ingresan al evento actual. ..."""
+    return consultas.ausentes_por_grupo(EVENTO_ACTIVO, empresa)
+```
+
+## 13. Texto en español: comparar sin mayúsculas ni tildes
+`lower()` de SQLite (y de muchos motores con su configuración por defecto) solo pasa a minúsculas el ASCII: "CAFÉ" ≠ "café". Normaliza en Python:
+```python
+import unicodedata
+def normalizar_texto(t: str) -> str:
+    sin_tildes = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode()
+    return " ".join(sin_tildes.casefold().split())
+```
+
+## 14. Conexiones y hora
+- `with sqlite3.connect(...) as c:` hace commit pero **no cierra** la conexión: usa un `@contextmanager` que haga `close()`.
+- Lambda y AgentCore corren en UTC: guarda la hora con zona (`datetime.now(ZoneInfo("America/Bogota"))`).

@@ -17,6 +17,9 @@ Agrega un agente solo si se cumple al menos una:
 
 Costo de cada agente extra: más llamadas, más latencia, más difícil de depurar.
 
+## 2b. Alcance de las herramientas
+El **alcance** de los datos (qué evento, qué colaborador, qué usuario) nunca lo decide el modelo: va fijo en el código de la herramienta o sale de la identidad autenticada (JWT). Las herramientas solo reciben los parámetros que el usuario puede variar legítimamente (por ejemplo, la empresa por la que pregunta). Documenta las firmas así en el diseño: `ausentes_por_grupo(empresa)`, no `ausentes_por_grupo(evento_id, empresa)`.
+
 ## 3. Patrones de Strands
 | Situación | Patrón | Strands |
 |---|---|---|
