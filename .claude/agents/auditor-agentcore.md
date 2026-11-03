@@ -1,6 +1,6 @@
 ---
 name: auditor-agentcore
-description: Auditor de solo lectura de la hackathon CONFA, lente "agentcore" (infraestructura AgentCore antes de desplegar: agentcore.json, aws-targets, Memory, Gateway, Identity, modelo habilitado y plan B). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar.
+description: "Auditor de solo lectura de la hackathon CONFA, lente \"agentcore\" (infraestructura AgentCore antes de desplegar: agentcore.json, aws-targets, Memory, Gateway, Identity, modelo habilitado y plan B). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar."
 tools: Read, Grep, Glob, Bash
 model: sonnet
 ---

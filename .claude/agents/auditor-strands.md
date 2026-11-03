@@ -1,6 +1,6 @@
 ---
 name: auditor-strands
-description: Auditor de solo lectura de la hackathon CONFA, lente "strands" (buenas prácticas de agentes Strands: herramientas @tool, docstrings, patrón multiagente, modelo por tarea, salida estructurada, nada de LLM donde basta código). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar.
+description: "Auditor de solo lectura de la hackathon CONFA, lente \"strands\" (buenas prácticas de agentes Strands: herramientas @tool, docstrings, patrón multiagente, modelo por tarea, salida estructurada, nada de LLM donde basta código). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar."
 tools: Read, Grep, Glob, Bash
 model: sonnet
 ---

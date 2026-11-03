@@ -1,6 +1,6 @@
 ---
 name: auditor-seguridad
-description: Auditor de solo lectura de la hackathon CONFA, lente "seguridad" (Ley 1581: credenciales, imágenes faciales persistidas, diagnósticos expuestos, consentimiento, minimización, control de acceso, guardrails y retención). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar.
+description: "Auditor de solo lectura de la hackathon CONFA, lente \"seguridad\" (Ley 1581: credenciales, imágenes faciales persistidas, diagnósticos expuestos, consentimiento, minimización, control de acceso, guardrails y retención). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar."
 tools: Read, Grep, Glob, Bash
 model: sonnet
 ---

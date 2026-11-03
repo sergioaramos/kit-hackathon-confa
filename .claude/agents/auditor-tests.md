@@ -1,6 +1,6 @@
 ---
 name: auditor-tests
-description: Auditor de solo lectura de la hackathon CONFA, lente "tests" (TDD y pruebas: corre pytest, verifica que cada criterio MVP y cada contingencia tengan prueba, y la calidad de los casos de evaluación del agente). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar.
+description: "Auditor de solo lectura de la hackathon CONFA, lente \"tests\" (TDD y pruebas: corre pytest, verifica que cada criterio MVP y cada contingencia tengan prueba, y la calidad de los casos de evaluación del agente). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar."
 tools: Read, Grep, Glob, Bash
 model: sonnet
 ---
