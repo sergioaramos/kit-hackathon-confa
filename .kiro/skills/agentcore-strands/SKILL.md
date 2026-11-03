@@ -16,6 +16,11 @@ Verificado el **3 nov 2026** con `@aws/agentcore` 1.0.1, `strands-agents` 1.63.0
 | `agentcore invoke --local --payload ...` | Agrega `--runtime <nombre>`: es obligatorio |
 | IDs de modelo sin prefijo (`anthropic.claude-...`) | Con perfil de inferencia: `us.` o `global.` (`global.anthropic.claude-sonnet-5-5`) |
 | `agent.structured_output(...)` como único camino | `agent(prompt, structured_output_model=Modelo)` → `resultado.structured_output` |
+| `@tool def consultar(evento_id: str, ...)`: el **modelo** decide el alcance | El alcance (evento, colaborador, usuario) va **fijo en código** o sale del JWT; nunca es parámetro de la herramienta. Un prompt malicioso puede pedir otro evento |
+| Dejar la memoria de la plantilla tal cual (`eventExpiryDuration: 30`, 4 estrategias) | `agentcore remove memory --name agentMemory` + `agentcore add memory --name agentMemory --event-expiry-duration 3 --strategies SUMMARIZATION`, y ajustar `memory/session.py` a los namespaces que quedan |
+| `NullConversationManager` de la plantilla (historial infinito) | `SlidingWindowConversationManager(window_size=20)` |
+| Construir el agente en `main.py` y aparte en las pruebas | Una sola fábrica `crear_agente(**kwargs)`; `main.py` le pasa `session_manager` y `conversation_manager`. Lo que se prueba es lo que se despliega |
+| System prompt con el lema entre comillas (`tono "Contigo, con todo"`) | El modelo lo copia literal al inicio de cada respuesta. Describe el tono con adjetivos, prohíbe lemas y emojis, y da un ejemplo de respuesta (ver `references/strands.md` §11) |
 
 ## Flujo de la CLI
 ```bash
