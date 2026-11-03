@@ -23,9 +23,10 @@ Objetivo: definir cliente y problema **antes** de la tecnología. Produce `docs/
 | 5 | ¿Cómo es su experiencia? | Paso a paso **desde los ojos del cliente**, con la contingencia incluida | Describir la arquitectura |
 
 3. Sugiere la **encuesta a mano alzada del kickoff** (los participantes son colaboradores de CONFA y clientes reales del reto 2) si falta evidencia.
-4. Redacta el comunicado de prensa con la plantilla de abajo. **Sin** "IA", "agente", "AWS" ni "Bedrock": habla de la vida del cliente.
-5. Escribe `docs/working-backwards.md` y llena `.kiro/steering/producto.md`.
-6. Cierra diciendo que el siguiente paso es `/spec-requisitos`.
+4. Redacta el comunicado de prensa con la plantilla de abajo. **Sin** "IA", "agente", "AWS" ni "Bedrock": habla de la vida del cliente. La cita del comunicado es ilustrativa por convención: en el documento márcala así y, si es posible, reemplázala por una frase real del kickoff.
+5. Recalcula cada cifra derivada (multiplicaciones, porcentajes) antes de escribirla.
+6. Escribe `docs/working-backwards.md` y llena `.kiro/steering/producto.md`.
+7. Cierra diciendo que el siguiente paso es `/spec-requisitos`.
 
 ## Plantilla del comunicado
 ```

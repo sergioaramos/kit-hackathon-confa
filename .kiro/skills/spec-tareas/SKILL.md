@@ -27,7 +27,8 @@ Entrada: `requirements.md` + `design.md`. Salida: `.kiro/specs/<slug>/tasks.md`.
    - **7 · Verificación**: auditorías y ensayo.
 6. **Cierre de cada bloque**: una tarea "Auditar el bloque" con `/auditoria codigo tests strands` (y `seguridad` si tocó datos).
 7. **Último bloque**: `/auditoria agentcore seguridad` antes del deploy final, `/auditoria spec-rubrica` y `/presentacion`.
-8. **Trazabilidad**: todo criterio de `requirements.md` aparece en al menos una tarea. Si no, repórtalo como hueco.
+8. **Trazabilidad**: todo criterio de `requirements.md` aparece en al menos una tarea. Si no, repórtalo como hueco. **No escribas "Huecos: ninguno" sin recorrer criterio por criterio**: en el laboratorio quedaron sin tarea la inscripción, el registro en sitio y el ritmo de ingreso.
+9. **Todo requisito MVP en los bloques 1 a 4.** Si un MVP cae en un bloque tardío (por ejemplo, el tablero en tiempo real), muévelo o márcalo como riesgo.
 
 ## Cierre
 Reporta el número de tareas por bloque, las paralelizables, los huecos y el siguiente paso: `/implementar`.

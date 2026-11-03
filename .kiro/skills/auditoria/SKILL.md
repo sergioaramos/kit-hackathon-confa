@@ -36,3 +36,5 @@ description: Audita el desarrollo de la hackathon con una o varias lentes - segu
 ### Veredicto: LISTO | LISTO CON AJUSTES | NO LISTO
 ```
 Máximo 15 hallazgos, ordenados por severidad. Si una lente no encuentra nada, dilo en una línea.
+
+Quien invoca la auditoría (no el auditor, que es de solo lectura) guarda el informe en `docs/auditorias/<fecha>-<lentes>.md`: es la evidencia de que cada bloque se auditó.
