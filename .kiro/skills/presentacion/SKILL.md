@@ -35,12 +35,18 @@ Abrir con el cliente, no con la arquitectura. Cerrar con el impacto.
 2. Reemplaza cada `EDITAR` (`grep -n EDITAR` debe quedar vacío). Textos cortos: máximo 3 ideas por diapositiva.
 3. Mecánicas disponibles:
    - Clase `f`: el elemento aparece al avanzar (un paso por elemento, en orden).
-   - Cifra animada: `<div class="cifra" data-count="70" data-prefijo="−" data-sufijo=" %">0</div>`.
+   - Cifra animada: `<div class="cifra" data-count="70" data-prefijo="−" data-sufijo="%">0</div>`. **Sufijo corto** (`%`, `s`, `h`); las palabras van en el texto de abajo, porque un sufijo largo desborda la tarjeta.
+   - Citas: si la persona no es real (un comunicado o una persona ilustrativa), dilo en el `<small>` de la cita. El jurado premia la evidencia, no los testimonios inventados.
    - Diagrama: cada `<g class="nodo f">` y cada `<path class="flecha">` aparecen por pasos. Ajusta las coordenadas del `viewBox` 1000×300 al diseño real.
    - Notas del presentador: `<aside class="notas">` en cada diapositiva (tecla `N`).
    - Colores en `:root` (`--marca`, `--acento`).
 4. Teclas: ←/→ avanzar, `N` notas, `F` pantalla completa, `T` iniciar o pausar el cronómetro (cambia de color al minuto 9 y se pone rojo al pasar de 10), `R` reiniciar el reloj.
-5. **PDF de respaldo**: abrir en Chrome → Imprimir → Guardar como PDF → horizontal, márgenes: ninguno, con gráficos de fondo. Sale una diapositiva por página, sin animaciones.
+5. **PDF de respaldo**: abrir en Chrome → Imprimir → Guardar como PDF → horizontal, márgenes: ninguno, con gráficos de fondo. Sale una diapositiva por página, sin animaciones y con las cifras en su valor final. También desde la terminal (macOS; en Windows, la ruta de `chrome.exe`):
+   ```bash
+   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer \
+     --print-to-pdf=docs/presentacion/presentacion.pdf "file://$PWD/docs/presentacion/index.html"
+   ```
+6. **Revisa el PDF página por página** antes de darlo por bueno: textos que desbordan, cifras y diagramas.
 
 ## guion.md
 - **Guion por diapositiva**, con tiempos acumulados y quién habla.

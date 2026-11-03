@@ -40,7 +40,8 @@ ul.lista li::before{content:"";position:absolute;left:0;top:.55em;width:.6em;hei
 .f{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
 .f.visible{opacity:1;transform:none}
 /* ====== Cifras ====== */
-.cifra{font-size:clamp(56px,9vw,150px);font-weight:900;line-height:1;letter-spacing:-.03em}
+.cifra{font-size:clamp(48px,7vw,120px);font-weight:900;line-height:1;letter-spacing:-.03em;white-space:nowrap}
+.cifra .unidad{font-size:.42em;letter-spacing:0;margin-left:.08em}
 .supuesto{font-size:clamp(12px,1.2vw,16px);color:var(--suave);opacity:.85}
 /* ====== Tabla ====== */
 table{width:100%;border-collapse:collapse;font-size:clamp(14px,1.6vw,24px)}
@@ -74,6 +75,7 @@ aside.notas{display:none}
   html,body{overflow:visible;height:auto;background:var(--fondo)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .slide{position:relative;opacity:1!important;transform:none!important;width:1280px;height:720px;page-break-after:always;break-after:page}
   .f{opacity:1!important;transform:none!important} .flecha{stroke-dashoffset:0!important}
+  .degradado{background:none!important;color:var(--marca)!important;-webkit-text-fill-color:var(--marca)!important}
   #progreso,#reloj,#contador,#notas,#ayuda{display:none!important}
 }
 </style>
@@ -219,12 +221,20 @@ aside.notas{display:none}
   const pasos = s => [...s.querySelectorAll('.f, .flecha')];
   const notas = document.getElementById('notas');
 
+  const escapar = t => t.replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+  const formato = (el, v) => escapar(el.dataset.prefijo || '') + v.toLocaleString('es-CO') +
+    (el.dataset.sufijo ? '<span class="unidad">' + escapar(el.dataset.sufijo.trim()) + '</span>' : '');
+  const valorFinal = el => { el.innerHTML = formato(el, parseFloat(el.dataset.count)); };
+  // El valor final queda escrito desde el inicio: así el PDF y la vista sin JS nunca muestran "0"
+  document.querySelectorAll('[data-count]').forEach(valorFinal);
+  window.addEventListener('beforeprint', () => document.querySelectorAll('[data-count]').forEach(valorFinal));
+
   function contar(el) {
     if (el.dataset.hecho) return; el.dataset.hecho = 1;
-    const fin = parseFloat(el.dataset.count), pre = el.dataset.prefijo || '', suf = el.dataset.sufijo || '';
+    const fin = parseFloat(el.dataset.count);
     const t0 = performance.now(), dur = 1400;
     const tick = t => { const p = Math.min(1, (t - t0) / dur), v = Math.round(fin * (1 - Math.pow(1 - p, 3)));
-      el.textContent = pre + v.toLocaleString('es-CO') + suf; if (p < 1) requestAnimationFrame(tick); };
+      el.innerHTML = formato(el, v); if (p < 1) requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
   }
 
