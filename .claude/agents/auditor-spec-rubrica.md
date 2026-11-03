@@ -1,6 +1,6 @@
 ---
 name: auditor-spec-rubrica
-description: Auditor de solo lectura de la hackathon CONFA, lente "spec-rubrica" (trazabilidad Working Backwards → requisitos → diseño → tareas → código, y nota estimada con la rúbrica oficial de 8 dimensiones). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar.
+description: "Auditor de solo lectura de la hackathon CONFA, lente \"spec-rubrica\" (trazabilidad Working Backwards → requisitos → diseño → tareas → código, y nota estimada con la rúbrica oficial de 8 dimensiones). Úsalo al cerrar bloques de tareas, antes de desplegar o antes de presentar."
 tools: Read, Grep, Glob, Bash
 model: sonnet
 ---
