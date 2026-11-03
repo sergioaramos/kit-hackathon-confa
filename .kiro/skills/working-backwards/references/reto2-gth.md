@@ -30,5 +30,9 @@ Tiempo total del ciclo · % con trazabilidad completa · solicitudes perdidas o 
 - Los participantes de la hackathon son colaboradores: encuesta a mano alzada en el kickoff.
 
 ## Desafíos
-- Rutas configurables sin reprogramar.
-- Datos de salud: el aprobador no ve diagnósticos.
+- Rutas configurables sin reprogramar, incluida la **edición** de trámites existentes (no solo crear).
+- Datos de salud: el aprobador no ve diagnósticos; consentimiento antes de adjuntar soportes.
+- Días hábiles: descontar fines de semana y festivos de Colombia (por ejemplo, el 8 y el 25 de diciembre).
+
+## Patrón recomendado (verificado en el laboratorio)
+La ruta de aprobación como **configuración validada contra un esquema** + un **motor determinista** que la interpreta. El agente diseñador propone; GTH publica. Cada solicitud guarda la versión del trámite con la que se radicó. Ver `spec-diseno/references/decisiones.md` §2c.
